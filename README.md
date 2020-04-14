@@ -4,6 +4,14 @@ This is a boilerplate project used for starting new projects!
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Notes for Phoebe
+
+Hello
+Start by checking out the iranta pub/priv routes. 
+`$ code ~/projects/thinkful/projects/capstone2/iranta/`
+
+I added usercontext, and services for user, auth and token already.
+
 ## Set up
 Complete the following steps to start a new project (`NEW-PROJECT-NAME`):
 
