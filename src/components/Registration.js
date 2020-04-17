@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { Form, Col, Button } from './Bootstrap';
 import AuthApiService from '../services/auth-api-service';
 import ErrorContainer from '../components/ErrorContainer';
 
@@ -20,7 +21,7 @@ const Registration = (props) => {
 
 	const firstInput = useRef(null);
 
-	const requiredErrorMsg = <span className='error'>Field cannot be blank</span>;
+	const requiredErrorMsg = <span className='error'>{' '}Field cannot be blank</span>;
 
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
@@ -42,84 +43,90 @@ const Registration = (props) => {
 	};
 
 	useEffect(() => {
-		firstInput.current.focus()
+		firstInput.current.focus();
 	}, []);
 
 	console.log(firstName, username);
 	return (
-		<form className='Registration' onSubmit={handleSubmit}>
-			<h2>Sign Up</h2>
+		<Form className='Registration' onSubmit={handleSubmit}>
 			{error && <ErrorContainer error={error} />}
 
-			<div>
-			<Label htmlFor='registration-firstName-input'>
-				First Name
-				{firstNameIsEmpty && requiredErrorMsg}
-			</Label>
-			<Input
-				ref={firstInput}
-				value={firstName}
-				id='registration-firstName-input'
-				onChange={(event) => setFirstName(event.target.value)}
-				nameProp='firstName'
-				onBlur={() =>
-					!firstName ? setFirstNameIsEmpty(true) : setFirstNameIsEmpty(false)
-				}
-				required
-			></Input>
-			</div>
+			<Form.Group>
+				<Label htmlFor='registration-firstName-input'>
+					First Name
+					{firstNameIsEmpty && requiredErrorMsg}
+				</Label>
+				<Input
+					ref={firstInput}
+					value={firstName}
+					id='registration-firstName-input'
+					onChange={(event) => setFirstName(event.target.value)}
+					nameProp='firstName'
+					onBlur={() =>
+						!firstName ? setFirstNameIsEmpty(true) : setFirstNameIsEmpty(false)
+					}
+					required
+				></Input>
+			</Form.Group>
 
-			<Label htmlFor='registration-username-input'>
-				Username
-				{usernameIsEmpty && requiredErrorMsg}
-			</Label>
-			<Input
-				value={username}
-				onChange={(event) => setUsername(event.target.value)}
-				id={`login-username-input`}
-				aria-label='username'
-				onBlur={() =>
-					!username ? setUsernameIsEmpty(true) : setUsernameIsEmpty(true)
-				}
-				required
-			></Input>
+			<Form.Group>
+				<Label htmlFor='registration-username-input'>
+					Username
+					{usernameIsEmpty && requiredErrorMsg}
+				</Label>
+				<Input
+					value={username}
+					onChange={(event) => setUsername(event.target.value)}
+					id={`login-username-input`}
+					aria-label='username'
+					onBlur={() =>
+						!username ? setUsernameIsEmpty(true) : setUsernameIsEmpty(true)
+					}
+					required
+				></Input>
+			</Form.Group>
 
-			<Label htmlFor='registration-password-input'>
-				Password
-				{passwordIsEmpty && requiredErrorMsg}
-			</Label>
-			<Input
-				type='password'
-				value={password}
-				onChange={(event) => setPassword(event.target.value)}
-				id='registration-password-input'
-				nameProp='password'
-				onBlur={() =>
-					!password ? setPasswordIsEmpty(true) : setUsernameIsEmpty(false)
-				}
-				required
-			></Input>
+			<Form.Row>
+				<Form.Group as={Col}>
+					<Label htmlFor='registration-password-input'>
+						Password
+						{passwordIsEmpty && requiredErrorMsg}
+					</Label>
+					<Input
+						type='password'
+						value={password}
+						onChange={(event) => setPassword(event.target.value)}
+						id='registration-password-input'
+						nameProp='password'
+						onBlur={() =>
+							!password ? setPasswordIsEmpty(true) : setUsernameIsEmpty(false)
+						}
+						required
+					></Input>
+				</Form.Group>
 
-			<Label htmlFor='registration-isValid-input'>
-				Confirm Password{' '}
-				{confirmedPasswordIsEmpty && requiredErrorMsg}
-			</Label>
-			<Input
-				type='password'
-				onChange={(event) => setConfirmedPassword(event.target.value)}
-				id='registration-isValid-input'
-				aria-label='confirmed-password'
-				onBlur={() =>
-					!confirmedPassword
-						? setConfirmedPasswordIsEmpty(true)
-						: setConfirmedPasswordIsEmpty(false)
-				}
-				required
-			></Input>
+				<Form.Group as={Col}>
+					<Label htmlFor='registration-isValid-input'>
+						Confirm Password {confirmedPasswordIsEmpty && requiredErrorMsg}
+					</Label>
+					<Input
+						type='password'
+						onChange={(event) => setConfirmedPassword(event.target.value)}
+						id='registration-isValid-input'
+						aria-label='confirmed-password'
+						onBlur={() =>
+							!confirmedPassword
+								? setConfirmedPasswordIsEmpty(true)
+								: setConfirmedPasswordIsEmpty(false)
+						}
+						required
+					></Input>
+				</Form.Group>
+			</Form.Row>
 
-			<button type='submit'>Submit</button>
-			<Link to='/login'>Already have an account?</Link>
-		</form>
+			<Button type='submit'>Submit</Button>
+			<Link to='/login'><Button variant='link'>Already have an account?</Button></Link>
+		</Form>
 	);
 };
 

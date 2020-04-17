@@ -2,9 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Register from '../components/Registration';
 import Login from '../components/Login';
+import { Container } from '../components/Bootstrap';
 import { user } from '../components/helpers/userHelper';
-
-import '../components/tempstyles.css';
 
 const AuthView = (props) => {
 	if (user.exists) {
@@ -29,13 +28,14 @@ const AuthView = (props) => {
 	}
 
 	return (
-		<div className='AuthView'>
+		<Container className='AuthView'>
+			<h2>{props.match.url === '/login' ? 'Login' : 'Sign Up'}</h2>
 			{props.match.url === '/login' ? (
 				<Login onLoginSuccess={handleLoginSuccess} />
 			) : (
 				<Register onRegistrationSuccess={handleRegistrationSuccess} />
 			)}
-		</div>
+		</Container>
 	);
 };
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import AuthApiService from '../services/auth-api-service';
 import { useAuth } from './helpers/context';
-
+import { Form, Row, Col, Button } from './Bootstrap';
 import { Label, Input } from './form/form';
 import ErrorContainer from '../components/ErrorContainer';
 
@@ -12,7 +12,7 @@ const Login = (props) => {
 	const auth = useAuth();
 
 	const firstInput = useRef();
-	
+
 	useEffect(() => {
 		firstInput.current.focus();
 	}, []);
@@ -40,34 +40,41 @@ const Login = (props) => {
 	};
 
 	return (
-		<form className='Login' onSubmit={handleSubmit}>
+		<Form className='Login' onSubmit={handleSubmit}>
 			{error && <ErrorContainer error={error} />}
 
-			<h2>Login</h2>
+			<Form.Group as={Row}>
+				<Label htmlFor='login-username-input`' column sm={2}>
+					Username
+				</Label>
+				<Col sm={10}>
+					<Input
+						ref={firstInput}
+						id={`login-username-input`}
+						nameProp='username'
+						type='email'
+						required
+					></Input>
+				</Col>
+			</Form.Group>
 
-			<div>
-				<Label htmlFor='login-username-input`'>Username</Label>
-				<Input
-					ref={firstInput}
-					id={`login-username-input`}
-					nameProp='username'
-					required
-				></Input>
-			</div>
+			<Form.Group as={Row}>
+				<Label htmlFor='login-password-input' column sm={2}>
+					Password
+				</Label>
+				<Col sm={10}>
+					<Input
+						type='password'
+						id='login-password-input'
+						nameProp='password'
+						required
+					></Input>
+				</Col>
+			</Form.Group>
 
-			<div>
-				<Label htmlFor='login-password-input'>Password</Label>
-				<Input
-					type='password'
-					id='login-password-input'
-					nameProp='password'
-					required
-				></Input>
-			</div>
-
-			<button type='submit'>Submit</button>
-			<Link to='/register'>Sign Up For an Account</Link>
-		</form>
+			<Button type='submit'>Submit</Button>
+			<Link to='/register'><Button variant='link'>Sign Up For an Account</Button></Link>
+		</Form>
 	);
 };
 
