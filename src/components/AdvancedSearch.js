@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { usePokemon } from './helpers/context';
-// import SearchBar from '../components/SearchBar';
-import { Modal, Container, Row, Button } from './Bootstrap';
-
-import ModalButton from '../components/ModalButton';
+import React, { useState } from 'react';
 import { random, categories } from './helpers/searchHelper';
+import { Modal, Container, Row, Button } from './Bootstrap';
+import ModalButton from '../components/ModalButton';
 
 const AdvancedSearch = (props) => {
 	const [pageNumber, setPageNumber] = useState(1);
 	const [secondPageContent, setSecondPageContent] = useState({});
-	// const pokemonContext = usePokemon();
-
-	// const { pokemonResults } = pokemonContext;
 
 	return (
 		<div className='AdvancedSearch'>

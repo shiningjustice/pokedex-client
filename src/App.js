@@ -9,10 +9,9 @@ import PageNotFound from './views/PageNotFound';
 import { Modal } from './components/Bootstrap';
 import AdvancedSearch from './components/AdvancedSearch';
 
-import '../App.css';
+import './App.css';
 
 function App(props) {
-	// pbtag change default to false
 	const [modalIsActive, setModalIsActive] = useState(false);
 
 	const renderView = () => {

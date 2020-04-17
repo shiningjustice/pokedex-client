@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
+import { useAuth } from '../components/helpers/context';
 import SearchBar from '../components/SearchBar';
 import Results from '../components/Results';
-import { useAuth } from '../components/helpers/context';
 import ErrorContainer from '../components/ErrorContainer';
-
-// import { user } from '../components/helpers/userHelper';
-
-// **** GREETINGS DO THE LOAD MORE POKEMON BUTTON!! Might have to do it on the
-// Results.js page
 
 const ResultsView = (props) => {
 	const [error, setError] = useState(null);

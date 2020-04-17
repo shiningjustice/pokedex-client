@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Col, Button } from './Bootstrap';
 import AuthApiService from '../services/auth-api-service';
-import ErrorContainer from '../components/ErrorContainer';
-
 import { Label, Input } from './form/form';
+import { Form, Col, Button } from './Bootstrap';
+import ErrorContainer from '../components/ErrorContainer';
 
 const Registration = (props) => {
 	const [username, setUsername] = useState('');

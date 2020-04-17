@@ -1,6 +1,5 @@
 import React from 'react';
 import Spinner from 'react-bootstrap/Spinner';
-
 import '../styles/loadingIndicators.css';
 
 const LoadingIndicators = () => {

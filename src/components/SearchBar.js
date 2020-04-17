@@ -1,11 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PokemonApiService from '../services/pokemon-api-service';
 import { usePokemon } from './helpers/context';
-
 import { Form, Col, Button } from './Bootstrap';
-import './tempstyles.css';
-
-// get this from context later
 
 const SearchBar = (props) => {
 	const pokemonContext = usePokemon();
@@ -37,21 +33,10 @@ const SearchBar = (props) => {
 	};
 
 	const placeholder = 'Name or number';
+	
 	return (
 		<div className='SearchBar mainContainer'>
 			<Form.Row onSubmit={handleSubmit}>
-				{/* {props.inModal ? (
-					<input
-						className='SearchBar'
-						name='search-bar'
-						aria-label='search-bar'
-						placeholder={placeholder}
-						// SearchBar disabled when not visible, i.e., on the modal's 2nd
-						// page (for categories/subcategories)
-						disabled={props.disabled}
-						autoFocus
-					/>
-				) : ( */}
 
 				<Form.Label column sm={3.5} htmlFor='search-bar'>
 					Search for a Pokemon
@@ -66,9 +51,6 @@ const SearchBar = (props) => {
 					/>
 				</Col>
 
-				{/* )} */}
-
-				{/* this should be type='submit' but ran into some bugs and didn't have the time to fix it */}
 				<Col><Button type='submit' className='SearchBar'>
 					Search
 				</Button></Col>

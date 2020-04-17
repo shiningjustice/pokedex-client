@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-// import { Redirect } from 'react-router-dom';
 import { Textarea, Label } from './form/form';
 import { usePokemon } from './helpers/context';
 import LoadingIndicator from './LoadingIndicator';
-import AuthApiService from '../services/auth-api-service';
 import PokemonApiService from '../services/pokemon-api-service';
 import * as pokemonHelpers from './helpers/pokemonHelpers';
 import { Container, Table, Form, Button, Badge } from './Bootstrap';
@@ -14,8 +12,6 @@ const Single = (props) => {
 	const { auth, setError } = props;
 	const [editsInProgress, setEditsInProgress] = useState(false);
 	const [warnUnsavedChanges, addUnsavedWarning] = useState(false);
-	// const [isFavorited, setIsFavorited] = useState(false);
-	// const [note, setNote] = useState('');
 	const [loading, setLoading] = useState(true);
 
 	const pokeState = usePokemon();
@@ -34,8 +30,6 @@ const Single = (props) => {
 	const fetchPokemonByUrl = async () => {
 		setLoading(true);
 		if (props.match.params.name !== currPokemon.name) {
-			// setIsFavorited(currPokemon.favorited);
-			// setNote(currPokemon.note);
 
 			return await PokemonApiService.getRequestedPokemon(
 				{ name: props.match.params.name },
@@ -43,22 +37,13 @@ const Single = (props) => {
 			)
 				.then((res) => {
 					pokeState.setCurrPokemon(res);
-					// return res;
 				})
 				.then(() => {
 					setLoading(false);
 				})
-				// .then((res) => {
-				// 	setIsFavorited(res.favorited);
-				// 	setNote(res.notes);
-				// })
 				.catch((res) => {
-					// if (res.error.message === 'Request failed with status code 404') {
-					// 	return <Redirect to='/404' />;
-					// } else {
 					setError(res.error.message);
 					setLoading(false);
-					// }
 				});
 		} else {
 			setLoading(false);
@@ -98,9 +83,6 @@ const Single = (props) => {
 				favorited,
 			})
 				.then((res) => {
-					console.log('res of patch', res);
-					// console.log(notes);
-
 					// Create a deep copy of currPokemon
 					const updatedForFavorited = {};
 					Object.keys(currPokemon).forEach(
@@ -120,14 +102,12 @@ const Single = (props) => {
 					setError(error.message);
 				});
 		} else {
-			console.log('going to post');
+
 			return await PokemonApiService.postNewData({
 				id: currPokemon.id,
 				favorited,
 			})
 				.then((res) => {
-					// console.log({res});
-					// console.log({favorited});
 
 					const updatedForFavorited = {};
 					Object.keys(currPokemon).forEach(
@@ -159,7 +139,6 @@ const Single = (props) => {
 			console.log('currpokeid', currPokemon.id);
 			return await PokemonApiService.deleteSavedData(currPokemon.id)
 				.then(() => {
-					// console.log(notes);
 					const updatedForNotes = {};
 					Object.keys(currPokemon).forEach((key) => {
 						return (updatedForNotes[key] = currPokemon[key]);
@@ -172,15 +151,11 @@ const Single = (props) => {
 					setError(error.message);
 				});
 		} else if (favorited || (!favorited && currPokemon.notes)) {
-			console.log('going to patch');
 			return await PokemonApiService.patchSavedData({
 				id: currPokemon.id,
 				notes,
 			})
 				.then((res) => {
-					console.log('patchres', res, 'pathrresboolean', Boolean(res));
-					// console.log(notes);
-
 					// Create a deep copy of currPokemon
 					const updatedForNotes = {};
 					Object.keys(currPokemon).forEach(
@@ -207,9 +182,6 @@ const Single = (props) => {
 				notes,
 			})
 				.then((res) => {
-					// console.log(res);
-					// console.log(notes);
-
 					// Create a deep copy of currPokemon
 					const updatedForNotes = {};
 					Object.keys(currPokemon).forEach(
@@ -222,23 +194,13 @@ const Single = (props) => {
 					setError(error.message);
 				});
 		}
-
-		// AuthApiService.postLogin({
-		// 	isFavorited: isFavorited.value,
-		// 	notes: notes.value,
-		// })
-		// 	.then(() => {
-		// 		setEditsInProgress(false);
-		// 	})
-		// 	.catch((res) => {
-		// 		pokeState.setError(res.error);
-		// 	});
 	};
 
 	useEffect(() => {
 		setEditsInProgress(false);
 		console.log('i am a test');
 	}, [currPokemon]);
+
 
 	if (loading) {
 		return <LoadingIndicator />;
@@ -247,12 +209,6 @@ const Single = (props) => {
 	if (!Object.keys(currPokemon).length) {
 		return null;
 	} else {
-		// get this from context later
-		console.log({ currPokemon });
-		// console.log(editsInProgress);
-		// console.log(currPokemon.notes, note);
-		console.log('favorited in pokeState:', currPokemon.favorited);
-		console.log('notes in pokeState:', currPokemon.notes);
 		return (
 			<Container className='Single mainContainer'>
 				<Container className='Single header'>
@@ -333,11 +289,6 @@ const Single = (props) => {
 								<Textarea
 									id='notes'
 									defaultValue={currPokemon.notes}
-									// onChange={(event) => {
-									// 	if (!event.target.value) {
-									// 		setEditsInProgress(false);
-									// 	}
-									// }}
 									onBlur={(event) =>
 										currPokemon.notes !== event.target.value &&
 										addUnsavedWarning(true)

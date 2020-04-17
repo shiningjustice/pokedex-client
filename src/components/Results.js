@@ -1,30 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
+
 import { usePokemon } from '../components/helpers/context';
 import PokemonApiService from '../services/pokemon-api-service';
-
 import { categories } from '../components/helpers/searchHelper';
 import LoadingIndicators from '../components/LoadingIndicator';
 import { Container, Button, Card } from './Bootstrap';
 
-// import pokemonHelpers from './helpers/pokemonHelpers';
-
 import '../styles/results.css';
-
-// get this from context later
-// **** GREETINGS Please remember to pass in the page number in your request,
-// and if you click to view more have that update the page number too. This
-// neto be done regardless of what kind of browsin' u're doin
-
-// if time refactor code and pokecontext to use regular state. was initially
-// using hooks for state but then i thought i needed to use the callback but i
-// can just dothat in the code here and i wouldn't be able to do the callback in
-// the context anyway, the callback is for this page
 
 const Results = (props) => {
 	const [loading, setLoading] = useState(true);
-	const [path, setPath] = useState('home');
 	const viewStr = ['', '/back'];
 	const { auth, setError } = props;
 	const { params } = props.match;
@@ -39,25 +26,6 @@ const Results = (props) => {
 		numTotalPokemon,
 		pokemonPerPage,
 	} = pokeContext;
-
-	// const setCurrPath = () => {
-	// 	if (props.location.pathname === '/') {
-	// 		setPath('homepage');
-	// 	}
-	// 	if (props.location.pathname === '/favorites') {
-	// 		setPath('favorites');
-	// 	}
-	// 	if (props.location.pathname === '/browse/random') {
-	// 		setPath('random');
-	// 	}
-	// 	if (params.category && params.subcategory) {
-	// 		const { category } = props.match.params;
-	// 		const categoryNames = categories.map((cat) => cat.name);
-	// 		if (categoryNames.includes(category)) {
-	// 			setPath('filter');
-	// 		}
-	// 	}
-	// };
 
 	const getPokemonByUrl = async (currPageNum) => {
 		setLoading(true);
@@ -173,7 +141,8 @@ const Results = (props) => {
 
 	const loadMore = async () => {
 		// defining new page num because `useState` hook doesn't allow for a
-		// callback to be called after it's successfully set.
+		// callback to be called after it's successfully set (if time you can
+		// refactor to use `useEffect`)
 		const newPageNum = pageNum + 1;
 		setPageNum(newPageNum);
 		getPokemonByUrl(newPageNum);
@@ -191,8 +160,6 @@ const Results = (props) => {
 	};
 
 	useEffect(() => {
-		// console.log('in use effect');
-		// setCurrPath();
 		getPokemonByUrl(1);
 
 		return () => {
@@ -200,7 +167,7 @@ const Results = (props) => {
 		};
 	}, []);
 
-	console.log(pokemonResults);
+	
 	return (
 		<Container className='Results mainContainer'>
 			{renderH2()}

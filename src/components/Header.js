@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { useAuth } from './helpers/context';
 import { Container, Button } from './Bootstrap';
-
 import '../styles/header.css';
 
 const Header = (props) => {
@@ -12,9 +10,18 @@ const Header = (props) => {
 	const renderUserLinks = () => {
 		if (!!auth.user.id) {
 			return (
-				<Link to='/'>
-					<Button variant='light'>Logout</Button>
-				</Link>
+				<>
+					<Link className='ml-auto mr-2' to='/favorites'>
+						<Button variant='light'>
+							<span role='img' aria-label='heart'>
+								💖
+							</span>
+						</Button>
+					</Link>
+					<Link to='/'>
+						<Button variant='light'>Logout</Button>
+					</Link>
+				</>
 			);
 		} else {
 			return (
@@ -34,13 +41,6 @@ const Header = (props) => {
 		<Container fluid className='Header d-flex align-items-center'>
 			<Link to='/' className='Header Link'>
 				<h1 className='pixelFont'>Pokedex</h1>
-			</Link>
-			<Link className='ml-auto mr-2' to='/favorites'>
-				<Button variant='light'>
-					<span role='img' aria-label='heart'>
-						💖
-					</span>
-				</Button>
 			</Link>
 			{renderUserLinks()}
 		</Container>
