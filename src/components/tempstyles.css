@@ -1,0 +1,39 @@
+img.Results {
+  background-color: #9fd7f1;
+  border: 1pt solid gray;
+  border-top: 20pt solid gray;
+}
+/* li.Results {
+  padding-left: 10px;
+} */
+ul.Results {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Header {
+  width: 100%;
+  display: flex;
+}
+.Link.Header {
+  margin-right: auto;
+}
+
+.SearchBar.mainContainer {
+  margin-left: calc((100% - 200px) / 2);
+}
+input.SearchBar {
+  width: 200px;
+}
+.view {
+  max-width: 600px;
+  margin-left: calc((100vw - 600px) / 2);
+}
+
+.error {
+  color: red;
+  font-size: .75em;
+  font-style: italic;
+}
