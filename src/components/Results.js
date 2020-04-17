@@ -6,6 +6,7 @@ import PokemonApiService from '../services/pokemon-api-service';
 
 import { categories } from '../components/helpers/searchHelper';
 import LoadingIndicators from '../components/LoadingIndicator';
+import { Container, Button, Card } from './Bootstrap';
 
 // import pokemonHelpers from './helpers/pokemonHelpers';
 
@@ -147,9 +148,9 @@ const Results = (props) => {
 
 	const renderH2 = () => {
 		let content;
-		if (path === 'homepage') {
+		if (props.location.pathname === '/') {
 			content = 'Browse Pokemon';
-		} else if (path === 'favorites') {
+		} else if (props.location.pathname === '/favorites') {
 			const firstName = auth.user.first_name;
 			const isSFinal = (name) => {
 				if (name[name.length - 1] === 's') {
@@ -162,12 +163,12 @@ const Results = (props) => {
 				: `${firstName}'s`;
 
 			content = `${firstNamePossessive} Favorites`;
-		} else if (path === 'filter') {
-			const { category, subcategory } = props.match.params;
+		} else if (params.category && params.subcategory) {
+			const { category, subcategory } = params;
 			content = `Results for ${category} ${subcategory}`;
 		}
 
-		return <h2>{content}</h2>;
+		return <h2 className='pixelFont'>{content}</h2>;
 	};
 
 	const loadMore = async () => {
@@ -181,7 +182,11 @@ const Results = (props) => {
 	const conditionallyRenderMoreButton = () => {
 		if (props.location.pathname !== '/favorites' && pokemonResults.length > 0) {
 			console.log(pokemonResults.length);
-			return <button onClick={loadMore}>Load More Pokemon</button>;
+			return (
+				<Button onClick={loadMore} variant='secondary'>
+					Load More Pokemon
+				</Button>
+			);
 		}
 	};
 
@@ -192,32 +197,47 @@ const Results = (props) => {
 
 		return () => {
 			setPageNum(1);
-		}
+		};
 	}, []);
 
 	console.log(pokemonResults);
 	return (
-		<div className='Results mainContainer'>
+		<Container className='Results mainContainer mt-sm-3'>
 			<>
 				{renderH2()}
 				<ul className='Results'>
 					{pokemonResults.map((pokemon, index) => {
 						const id =
 							pokemon.id || pokemon.url.slice(34, pokemon.url.length - 1);
+
+						console.log(
+							`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon${viewStr[0]}/${id}.png`
+						);
+
 						return (
-							<li key={index} url={pokemon.url} className='Results'>
+							<Card
+								as='li'
+								key={index}
+								url={pokemon.url}
+								className='Results'
+								bg='light'
+								text='dark'
+							>
 								<Link to={`/pokemon/${pokemon.name}`}>
-									<img
+									<Card.Body>
+										<Card.Text size='sm' className='text-center pixelFont pokemonNameCard'>
+											{/* #{id} */}
+											{pokemon.name}
+										</Card.Text>
+									</Card.Body>
+									<Card.Img
 										className='Results'
+										variant='bottom'
 										src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon${viewStr[0]}/${id}.png`}
 										alt={`${pokemon.name} sprite`}
 									/>
-									<span className='Results pokemonName'>
-										{/* #{id} */}
-										{pokemon.name}
-									</span>
 								</Link>
-							</li>
+							</Card>
 						);
 					})}
 				</ul>
@@ -229,7 +249,7 @@ const Results = (props) => {
 			) : (
 				<div>No results found.</div>
 			)}
-		</div>
+		</Container>
 	);
 };
 
