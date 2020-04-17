@@ -3,7 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header';
 import ResultsView from './views/ResultsView';
+import SingleView from './views/SingleView';
 import AuthView from './views/AuthView';
+import PageNotFound from './views/PageNotFound';
 import Modal from './views/Modal';
 
 import './components/tempstyles.css';
@@ -41,6 +43,13 @@ function App(props) {
 						render={(routeProps) => <AuthView {...routeProps} />}
 					/>
 				))}
+				<Route
+					path='/pokemon/:name'
+					render={(routeProps) => (
+						<SingleView setModal={setModalIsActive} {...routeProps} />
+					)}
+				/>
+				<Route component={PageNotFound} />
 			</Switch>
 		);
 	};
