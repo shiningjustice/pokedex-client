@@ -53,7 +53,6 @@ const Single = (props) => {
 	// componentWillMount
 	useEffect(() => {
 		setEditsInProgress(false);
-		console.log('useEffect ran');
 		fetchPokemonByUrl();
 	}, []);
 
@@ -62,7 +61,6 @@ const Single = (props) => {
 		const notes = currPokemon.notes;
 
 		if (!favorited && !notes) {
-			console.log('going to delete');
 			return await PokemonApiService.deleteSavedData(currPokemon.id).then(
 				() => {
 					const updatedForFavorited = {};
@@ -72,12 +70,10 @@ const Single = (props) => {
 						}
 						return (updatedForFavorited[key] = currPokemon[key]);
 					});
-					console.log(updatedForFavorited.notes);
 					pokeState.setCurrPokemon(updatedForFavorited);
 				}
 			);
 		} else if (notes) {
-			console.log('going to patch');
 			return await PokemonApiService.patchSavedData({
 				id: currPokemon.id,
 				favorited,
@@ -133,10 +129,7 @@ const Single = (props) => {
 
 		const { favorited } = currPokemon;
 
-		console.log(favorited, notes);
 		if (!favorited && !notes) {
-			console.log('going to delete');
-			console.log('currpokeid', currPokemon.id);
 			return await PokemonApiService.deleteSavedData(currPokemon.id)
 				.then(() => {
 					const updatedForNotes = {};
@@ -144,7 +137,6 @@ const Single = (props) => {
 						return (updatedForNotes[key] = currPokemon[key]);
 					});
 					updatedForNotes.notes = '';
-					console.log(updatedForNotes.notes);
 					pokeState.setCurrPokemon(updatedForNotes);
 				})
 				.catch((error) => {
@@ -175,7 +167,6 @@ const Single = (props) => {
 					setError(error.message);
 				});
 		} else {
-			console.log('going to post');
 			return await PokemonApiService.postNewData({
 				id: currPokemon.id,
 				favorited: currPokemon.favorited,
@@ -198,7 +189,6 @@ const Single = (props) => {
 
 	useEffect(() => {
 		setEditsInProgress(false);
-		console.log('i am a test');
 	}, [currPokemon]);
 
 

@@ -9,7 +9,6 @@ const SearchBar = (props) => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log({ event });
 		const searchTerm = event.target.searchBar.value;
 
 		if (!searchTerm) {
@@ -21,7 +20,6 @@ const SearchBar = (props) => {
 			pokemonContext.pageNum
 		)
 			.then((res) => {
-				console.log({ res }, 'typeof:', typeof res);
 				if (Array.isArray(res)) {
 					pokemonContext.setPokemonResults(res);
 				} else {
@@ -36,7 +34,7 @@ const SearchBar = (props) => {
 	
 	return (
 		<div className='SearchBar mainContainer'>
-			<Form.Row onSubmit={handleSubmit}>
+			<Form onSubmit={handleSubmit}>
 
 				<Form.Label column sm={3.5} htmlFor='search-bar'>
 					Search for a Pokemon
@@ -57,7 +55,7 @@ const SearchBar = (props) => {
 				<Button variant='secondary' onClick={() => setModal(true)}>
 				Browse More
 			</Button>
-			</Form.Row>
+			</Form>
 		</div>
 	);
 };

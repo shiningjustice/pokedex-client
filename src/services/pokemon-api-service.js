@@ -2,8 +2,6 @@ import config from '../config';
 import TokenService from './token-service';
 
 const formatQueryParams = (params) => {
-	console.log(params);
-
 	const esc = encodeURIComponent;
 	const query = Object.keys(params)
 		.map((k) => {

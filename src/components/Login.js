@@ -34,7 +34,6 @@ const Login = (props) => {
 				props.onLoginSuccess();
 			})
 			.catch((res) => {
-				console.log(res.error);
 				setError();
 			});
 	};

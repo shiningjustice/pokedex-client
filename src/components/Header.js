@@ -34,6 +34,7 @@ const Header = (props) => {
 				</>
 			);
 		} else {
+			// if (props.params.)
 			return (
 				<>
 					<Link to='/login' className='mr-2'>

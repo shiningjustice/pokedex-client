@@ -150,7 +150,6 @@ const Results = (props) => {
 
 	const conditionallyRenderMoreButton = () => {
 		if (props.location.pathname !== '/favorites' && pokemonResults.length > 0) {
-			console.log(pokemonResults.length);
 			return (
 				<Button onClick={loadMore} variant='secondary'>
 					Load More Pokemon
@@ -175,10 +174,6 @@ const Results = (props) => {
 				{pokemonResults.map((pokemon, index) => {
 					const id =
 						pokemon.id || pokemon.url.slice(34, pokemon.url.length - 1);
-
-					console.log(
-						`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon${viewStr[0]}/${id}.png`
-					);
 
 					return (
 						<Card
