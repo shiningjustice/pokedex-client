@@ -10,7 +10,7 @@ import { Container, Button, Card } from './Bootstrap';
 
 // import pokemonHelpers from './helpers/pokemonHelpers';
 
-import './tempstyles.css';
+import '../styles/results.css';
 
 // get this from context later
 // **** GREETINGS Please remember to pass in the page number in your request,

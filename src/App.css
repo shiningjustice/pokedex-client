@@ -1,0 +1,4 @@
+.view {
+  max-width: 600px;
+  margin-left: calc((100vw - 600px) / 2);
+}

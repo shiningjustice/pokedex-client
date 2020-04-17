@@ -16,6 +16,12 @@ body {
   text-transform: capitalize;
 }
 
+.error {
+  color: red;
+  font-size: .75em;
+  font-style: italic;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

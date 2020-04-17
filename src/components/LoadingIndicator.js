@@ -1,7 +1,7 @@
 import React from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
-import './tempstyles.css';
+import '../styles/loadingIndicators.css';
 
 const LoadingIndicators = () => {
 	return (

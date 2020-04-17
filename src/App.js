@@ -9,7 +9,7 @@ import PageNotFound from './views/PageNotFound';
 import { Modal } from './components/Bootstrap';
 import AdvancedSearch from './components/AdvancedSearch';
 
-import './components/tempstyles.css';
+import '../App.css';
 
 function App(props) {
 	// pbtag change default to false

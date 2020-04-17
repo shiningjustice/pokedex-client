@@ -8,7 +8,7 @@ import PokemonApiService from '../services/pokemon-api-service';
 import * as pokemonHelpers from './helpers/pokemonHelpers';
 import { Container, Table, Form, Button, Badge } from './Bootstrap';
 
-import './tempstyles.css';
+import '../styles/single.css';
 
 const Single = (props) => {
 	const { auth, setError } = props;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from './helpers/context';
 import { Container, Button } from './Bootstrap';
 
-import './tempstyles.css';
+import '../styles/header.css';
 
 const Header = (props) => {
 	const auth = useAuth();
