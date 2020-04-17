@@ -1,3 +1,28 @@
+
+.Link.Header {
+  margin: .5em auto .5em 0;
+}
+
+h1 {
+  font-size: 2rem !important;
+}
+
+.view {
+  max-width: 600px;
+  margin-left: calc((100vw - 600px) / 2);
+}
+
+.error {
+  color: red;
+  font-size: .75em;
+  font-style: italic;
+}
+
+.spinner-grow {
+  padding: 1em;
+  margin: 1em;
+}
+
 img.Results {
   background-color: #9fd7f1;
   border: 1pt solid gray;
@@ -18,34 +43,21 @@ li.Results {
   height: 100%;
 }
 
-.Link.Header {
-  margin-right: auto;
-}
-
-/* .SearchBar.mainContainer {
-  margin-left: calc((100% - 400px) / 2);
-}
-input.SearchBar {
-  width: 200px;
-} */
-.view {
-  max-width: 600px;
-  margin-left: calc((100vw - 600px) / 2);
-}
-
-.error {
-  color: red;
-  font-size: .75em;
-  font-style: italic;
-}
-
-.spinner-grow {
-  padding: 1em;
-  margin: 1em;
-}
 
 .Results.mainContainer, .Single.mainContainer {
   margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2.Results {
+  text-align: center;
+}
+
+.Results > button {
+  align-self: center;
+  margin: 1.5em 0;
 }
 
 img.Single {
@@ -77,12 +89,15 @@ img.Single {
 }
 
 .Single.notes {
-  min-height: 5em;
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-items: center;
   width: 100%;
+}
+
+.Single.Notes > p {
+  display: block;
 }
 
 .Single.notes > form {
@@ -97,8 +112,25 @@ button.notes {
   margin-left: auto;
 }
 
+.Single.types {
+  margin-right: 1em;
+}
+
+div.Single.notes {
+  margin: 10px 0;
+}
+
+p.notesText {
+  padding: 10px;
+
+}
+
 .pokemonNameCard {
   font-size: 9pt;
   text-transform: uppercase;
   letter-spacing: .5px;
+}
+
+.LoadingIndicators {
+  margin: 1em;
 }

@@ -311,16 +311,10 @@ const Single = (props) => {
 							<td>
 								{currPokemon.types.map((obj, index) => {
 									return (
-										<>
-											<span className='capitalize' key={index}>
-												{obj.type.name}
-												{currPokemon.types.length > 0 &&
-												index < currPokemon.types.length - 1
-													? ', '
-													: ' '}
-											</span>
+										<span className='Single types capitalize' key={index}>
+											{obj.type.name}{' '}
 											<pokemonHelpers.TypeEmoji type={obj.type.name} />
-										</>
+										</span>
 									);
 								})}
 							</td>
@@ -328,8 +322,7 @@ const Single = (props) => {
 					</tbody>
 				</Table>
 
-				{/* {!!auth.user.id && ( */}
-				{true && (
+				{!!auth.user.id && (
 					<Container className='Single notes'>
 						{editsInProgress ? (
 							<Form classname='Single notes form' onSubmit={handleSubmitNotes}>
@@ -351,7 +344,9 @@ const Single = (props) => {
 									}
 									nameProp='notes'
 								/>
-								<Button type='submit' className='notes'>Save</Button>
+								<Button type='submit' className='notes'>
+									Save
+								</Button>
 								<Button
 									type='reset'
 									onClick={(event) => {
@@ -367,7 +362,7 @@ const Single = (props) => {
 						) : (
 							<div className='Single notes'>
 								<Label as='div'>Your Notes:</Label>
-								<p>{currPokemon.notes}</p>
+								<p className='notesText'>{currPokemon.notes}</p>
 								<Button
 									onClick={() => setEditsInProgress(true)}
 									type='button'

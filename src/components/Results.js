@@ -168,7 +168,7 @@ const Results = (props) => {
 			content = `Results for ${category} ${subcategory}`;
 		}
 
-		return <h2 className='pixelFont'>{content}</h2>;
+		return <h2 className='Results pixelFont'>{content}</h2>;
 	};
 
 	const loadMore = async () => {
@@ -193,7 +193,7 @@ const Results = (props) => {
 	useEffect(() => {
 		// console.log('in use effect');
 		// setCurrPath();
-		// getPokemonByUrl(1);
+		getPokemonByUrl(1);
 
 		return () => {
 			setPageNum(1);
@@ -202,46 +202,47 @@ const Results = (props) => {
 
 	console.log(pokemonResults);
 	return (
-		<Container className='Results mainContainer mt-sm-3'>
-			<>
-				{renderH2()}
-				<ul className='Results'>
-					{pokemonResults.map((pokemon, index) => {
-						const id =
-							pokemon.id || pokemon.url.slice(34, pokemon.url.length - 1);
+		<Container className='Results mainContainer'>
+			{renderH2()}
+			<ul className='Results'>
+				{pokemonResults.map((pokemon, index) => {
+					const id =
+						pokemon.id || pokemon.url.slice(34, pokemon.url.length - 1);
 
-						console.log(
-							`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon${viewStr[0]}/${id}.png`
-						);
+					console.log(
+						`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon${viewStr[0]}/${id}.png`
+					);
 
-						return (
-							<Card
-								as='li'
-								key={index}
-								url={pokemon.url}
-								className='Results'
-								bg='light'
-								text='dark'
-							>
-								<Link to={`/pokemon/${pokemon.name}`}>
-									<Card.Body>
-										<Card.Text size='sm' className='text-center pixelFont pokemonNameCard'>
-											{/* #{id} */}
-											{pokemon.name}
-										</Card.Text>
-									</Card.Body>
-									<Card.Img
-										className='Results'
-										variant='bottom'
-										src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon${viewStr[0]}/${id}.png`}
-										alt={`${pokemon.name} sprite`}
-									/>
-								</Link>
-							</Card>
-						);
-					})}
-				</ul>
-			</>
+					return (
+						<Card
+							as='li'
+							key={index}
+							url={pokemon.url}
+							className='Results'
+							bg='light'
+							text='dark'
+						>
+							<Link to={`/pokemon/${pokemon.name}`}>
+								<Card.Body>
+									<Card.Text
+										size='sm'
+										className='text-center pixelFont pokemonNameCard'
+									>
+										{/* #{id} */}
+										{pokemon.name}
+									</Card.Text>
+								</Card.Body>
+								<Card.Img
+									className='Results'
+									variant='bottom'
+									src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon${viewStr[0]}/${id}.png`}
+									alt={`${pokemon.name} sprite`}
+								/>
+							</Link>
+						</Card>
+					);
+				})}
+			</ul>
 			{loading ? (
 				<LoadingIndicators />
 			) : pokemonResults.length ? (

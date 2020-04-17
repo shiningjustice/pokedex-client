@@ -1,6 +1,8 @@
 import React from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
+import './tempstyles.css';
+
 const LoadingIndicators = () => {
 	return (
 		<div className='LoadingIndicators d-flex justify-content-center'>
