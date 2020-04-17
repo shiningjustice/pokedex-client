@@ -38,7 +38,7 @@ const Header = (props) => {
 			<Link className='ml-auto mr-2' to='/favorites'>
 				<Button variant='light'>
 					<span role='img' aria-label='heart'>
-						❤
+						💖
 					</span>
 				</Button>
 			</Link>
