@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 // import { Redirect } from 'react-router-dom';
 import { Textarea, Label } from './form/form';
-import { usePokemon } from './helpers/context'
+import { usePokemon } from './helpers/context';
 import LoadingIndicator from './LoadingIndicator';
 import AuthApiService from '../services/auth-api-service';
 import PokemonApiService from '../services/pokemon-api-service';
 import * as pokemonHelpers from './helpers/pokemonHelpers';
+import { Container, Table, Form, Button, Badge } from './Bootstrap';
 
 import './tempstyles.css';
 
@@ -82,7 +83,7 @@ const Single = (props) => {
 					const updatedForFavorited = {};
 					Object.keys(currPokemon).forEach((key) => {
 						if (key === 'favorited') {
-							return updatedForFavorited[favorited] = false;
+							return (updatedForFavorited[favorited] = false);
 						}
 						return (updatedForFavorited[key] = currPokemon[key]);
 					});
@@ -177,7 +178,7 @@ const Single = (props) => {
 				notes,
 			})
 				.then((res) => {
-					console.log('patchres',res,'pathrresboolean', Boolean(res));
+					console.log('patchres', res, 'pathrresboolean', Boolean(res));
 					// console.log(notes);
 
 					// Create a deep copy of currPokemon
@@ -253,15 +254,41 @@ const Single = (props) => {
 		console.log('favorited in pokeState:', currPokemon.favorited);
 		console.log('notes in pokeState:', currPokemon.notes);
 		return (
-			<div className='Single'>
-				<h2>
-					{currPokemon.name}{' '}
-					{currPokemon.types.map((obj, index) => (
-						<pokemonHelpers.TypeEmoji key={index} type={obj.type.name} />
-					))}
-				</h2>
-				<h3>#{currPokemon.id}</h3>
+			<Container className='Single mainContainer'>
+				<Container className='Single header'>
+					<Container>
+						<h2 className='pixelFont'>{currPokemon.name} </h2>
+						<div className='Single h3'>
+							<h3>#{currPokemon.id}</h3>
+							<Badge>
+								{currPokemon.types.map((obj, index) => (
+									<pokemonHelpers.TypeEmoji key={index} type={obj.type.name} />
+								))}
+							</Badge>
+						</div>
+					</Container>
+					{!!auth.user.id && (
+						<Form>
+							<Button
+								type='button'
+								onClick={() => handleSubmitFavorited(!currPokemon.favorited)}
+								variant='light'
+							>
+								{currPokemon.favorited ? (
+									<span role='img' aria-label='favorited'>
+										❤️
+									</span>
+								) : (
+									<span role='img' aria-label='not favorited'>
+										🤍
+									</span>
+								)}
+							</Button>
+						</Form>
+					)}
+				</Container>
 				<img
+					className='Single'
 					// src={currPokemon.sprites[imageKey]}
 					src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${calcIndForImgSrc(
 						currPokemon.id
@@ -269,7 +296,7 @@ const Single = (props) => {
 					alt={currPokemon.name}
 				/>
 				{/* <button onClick={affectSpin}>{spinStatus} Spin</button> */}
-				<table>
+				<Table responsive>
 					<tbody>
 						<tr>
 							<th>Height</th>
@@ -282,42 +309,31 @@ const Single = (props) => {
 						<tr>
 							<th>Type(s)</th>
 							<td>
-								{currPokemon.types.map((obj, index) => (
-									<span key={index}>
-										{obj.type.name}
-										{currPokemon.types.length > 0 &&
-										index < currPokemon.types.length - 1
-											? ', '
-											: ' '}
-									</span>
-								))}
+								{currPokemon.types.map((obj, index) => {
+									return (
+										<>
+											<span className='capitalize' key={index}>
+												{obj.type.name}
+												{currPokemon.types.length > 0 &&
+												index < currPokemon.types.length - 1
+													? ', '
+													: ' '}
+											</span>
+											<pokemonHelpers.TypeEmoji type={obj.type.name} />
+										</>
+									);
+								})}
 							</td>
 						</tr>
 					</tbody>
-				</table>
+				</Table>
 
-				{/* {true && ( */}
-				{!!auth.user.id && (
-					<>
-						<form>
-							<button
-								type='button'
-								onClick={() => handleSubmitFavorited(!currPokemon.favorited)}
-							>
-								{currPokemon.favorited ? (
-									<span role='img' aria-label='favorited'>
-										❤️
-									</span>
-								) : (
-									<span role='img' aria-label='not favorited'>
-										🤍
-									</span>
-								)}
-							</button>
-						</form>
+				{/* {!!auth.user.id && ( */}
+				{true && (
+					<Container className='Single notes'>
 						{editsInProgress ? (
-							<form onSubmit={handleSubmitNotes}>
-								<Label htmlFor='notes'>Notes</Label>
+							<Form classname='Single notes form' onSubmit={handleSubmitNotes}>
+								<Label htmlFor='notes'>Your Notes:</Label>
 								{warnUnsavedChanges && (
 									<span className='error'>Unsaved changes</span>
 								)}
@@ -335,38 +351,54 @@ const Single = (props) => {
 									}
 									nameProp='notes'
 								/>
-								<button type='submit'>Save</button>
-								<button
+								<Button type='submit' className='notes'>Save</Button>
+								<Button
 									type='reset'
 									onClick={(event) => {
 										event.target.value = currPokemon.notes;
 										setEditsInProgress(false);
 									}}
+									className='notes'
+									variant='secondary'
 								>
 									Cancel
-								</button>
-							</form>
+								</Button>
+							</Form>
 						) : (
-							<div className='notes'>
-								<p>Notes:</p>
+							<div className='Single notes'>
+								<Label as='div'>Your Notes:</Label>
 								<p>{currPokemon.notes}</p>
-								<button type='button' onClick={() => setEditsInProgress(true)}>
+								<Button
+									onClick={() => setEditsInProgress(true)}
+									type='button'
+									className='Single editButton'
+								>
 									Edit
-								</button>
+								</Button>
 							</div>
 						)}
-					</>
+					</Container>
 				)}
 
-				<table>
+				<Table>
 					<tbody>
 						<tr>
-							<th>abilities</th>
+							<th>Abilities</th>
 							<td>
-								<ul>
+								<ul className=''>
 									{currPokemon.abilities.map(
 										(obj, index) =>
-											!obj.is_hidden && <li key={index}>{obj.ability.name}</li>
+											!obj.is_hidden && (
+												<Badge
+													pill
+													variant='light'
+													as='li'
+													className='capitalize'
+													key={index}
+												>
+													{obj.ability.name}
+												</Badge>
+											)
 									)}
 								</ul>
 							</td>
@@ -374,16 +406,24 @@ const Single = (props) => {
 						<tr>
 							<th>Moves</th>
 							<td>
-								<ul>
+								<ul className=''>
 									{currPokemon.moves.map((obj, index) => (
-										<li key={index}>{obj.move.name}</li>
+										<Badge
+											pill
+											variant='light'
+											as='li'
+											className='capitalize'
+											key={index}
+										>
+											{obj.move.name}
+										</Badge>
 									))}
 								</ul>
 							</td>
 						</tr>
 					</tbody>
-				</table>
-			</div>
+				</Table>
+			</Container>
 		);
 	}
 };

@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-import Tooltip from 'react-bootstrap/Tooltip';
+import Table from 'react-bootstrap/Table';
+import Badge from 'react-bootstrap/Badge';
 
-export { Button, Modal, Container, Row, Col, Form, Card };
+export { Button, Modal, Container, Row, Col, Form, Card, Table, Badge };

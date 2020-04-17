@@ -9,7 +9,13 @@ body {
 
 .pixelFont {
   font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
 }
+
+.capitalize {
+  text-transform: capitalize;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -48,6 +48,55 @@ input.SearchBar {
   margin-top: 2em;
 }
 
+img.Single {
+  align-self: center;
+}
+
+.Single.mainContainer {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Single.header, .Single.h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-self: flex-end;
+}
+
+.badge {
+  margin-left: 1em;
+}
+
+.Single.userSavedFields {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.Single.notes {
+  min-height: 5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+}
+
+.Single.notes > form {
+  width: 100%;
+}
+
+button.notes {
+  margin: 1em 1em 1em 0;
+}
+
+.Single.editButton {
+  margin-left: auto;
+}
+
 .pokemonNameCard {
   font-size: 9pt;
   text-transform: uppercase;
