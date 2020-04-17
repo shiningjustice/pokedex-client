@@ -7,6 +7,9 @@ import App from './App';
 import './index.css';
 import './reset.css';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 ReactDOM.render(
 	<BrowserRouter>
 		<UserProvider>
