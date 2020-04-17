@@ -52,7 +52,6 @@ const Login = (props) => {
 						ref={firstInput}
 						id={`login-username-input`}
 						nameProp='username'
-						type='email'
 						required
 					></Input>
 				</Col>
