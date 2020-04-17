@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import PokemonApiService from '../services/pokemon-api-service';
 import { usePokemon } from './helpers/context';
+
+import { Form, Col, Button } from './Bootstrap';
 import './tempstyles.css';
 
 // get this from context later
@@ -37,7 +39,7 @@ const SearchBar = (props) => {
 	const placeholder = 'Name or number';
 	return (
 		<div className='SearchBar mainContainer'>
-			<form onSubmit={handleSubmit}>
+			<Form.Row onSubmit={handleSubmit}>
 				{/* {props.inModal ? (
 					<input
 						className='SearchBar'
@@ -51,24 +53,29 @@ const SearchBar = (props) => {
 					/>
 				) : ( */}
 
-				<label htmlFor='search-bar'>Search for a Pokemon</label>
-				<input
-					className='SearchBar'
-					id='search-bar'
-					name='searchBar'
-					aria-label='search-bar'
-					placeholder={placeholder}
-				/>
+				<Form.Label column sm={3.5} htmlFor='search-bar'>
+					Search for a Pokemon
+				</Form.Label>
+				<Col sm={4.5}>
+					<Form.Control
+						className='SearchBar'
+						id='search-bar'
+						name='searchBar'
+						aria-label='search-bar'
+						placeholder={placeholder}
+					/>
+				</Col>
 
 				{/* )} */}
 
 				{/* this should be type='submit' but ran into some bugs and didn't have the time to fix it */}
-				<button type='submit' className='SearchBar'>
+				<Col><Button type='submit' className='SearchBar'>
 					Search
-				</button>
-			</form>
-
-			<button onClick={() => setModal(true)}>Browse More</button>
+				</Button></Col>
+				<Button variant='secondary' onClick={() => setModal(true)}>
+				Browse More
+			</Button>
+			</Form.Row>
 		</div>
 	);
 };
