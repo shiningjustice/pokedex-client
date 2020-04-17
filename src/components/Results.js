@@ -5,6 +5,7 @@ import { usePokemon } from '../components/helpers/context';
 import PokemonApiService from '../services/pokemon-api-service';
 
 import { categories } from '../components/helpers/searchHelper';
+import LoadingIndicators from '../components/LoadingIndicator';
 
 // import pokemonHelpers from './helpers/pokemonHelpers';
 
@@ -187,7 +188,7 @@ const Results = (props) => {
 	useEffect(() => {
 		// console.log('in use effect');
 		// setCurrPath();
-		getPokemonByUrl(1);
+		// getPokemonByUrl(1);
 
 		return () => {
 			setPageNum(1);
@@ -222,7 +223,7 @@ const Results = (props) => {
 				</ul>
 			</>
 			{loading ? (
-				<h2>I'm a loading spinner</h2>
+				<LoadingIndicators />
 			) : pokemonResults.length ? (
 				conditionallyRenderMoreButton()
 			) : (

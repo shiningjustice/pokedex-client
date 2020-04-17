@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 // import { Redirect } from 'react-router-dom';
 import { Textarea, Label } from './form/form';
-import { usePokemon } from './helpers/context';
+import { usePokemon } from './helpers/context'
+import LoadingIndicator from './LoadingIndicator';
 import AuthApiService from '../services/auth-api-service';
 import PokemonApiService from '../services/pokemon-api-service';
 import * as pokemonHelpers from './helpers/pokemonHelpers';
@@ -239,7 +240,7 @@ const Single = (props) => {
 	}, [currPokemon]);
 
 	if (loading) {
-		return 'Loading';
+		return <LoadingIndicator />;
 	}
 
 	if (!Object.keys(currPokemon).length) {

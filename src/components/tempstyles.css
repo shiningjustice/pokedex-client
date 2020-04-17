@@ -3,9 +3,6 @@ img.Results {
   border: 1pt solid gray;
   border-top: 20pt solid gray;
 }
-/* li.Results {
-  padding-left: 10px;
-} */
 ul.Results {
   display: flex;
   flex-direction: row;
@@ -22,7 +19,7 @@ ul.Results {
 }
 
 .SearchBar.mainContainer {
-  margin-left: calc((100% - 200px) / 2);
+  margin-left: calc((100% - 400px) / 2);
 }
 input.SearchBar {
   width: 200px;
@@ -36,4 +33,9 @@ input.SearchBar {
   color: red;
   font-size: .75em;
   font-style: italic;
+}
+
+.spinner-grow {
+  padding: 1em;
+  margin: 1em;
 }
