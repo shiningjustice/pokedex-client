@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header';
 import ResultsView from './views/ResultsView';
 import AuthView from './views/AuthView';
+import Modal from './views/Modal';
 
 import './components/tempstyles.css';
 
 function App(props) {
+	const [modalIsActive, setModalIsActive] = useState(false);
 
 	const renderView = () => {
 		return (
@@ -16,7 +18,7 @@ function App(props) {
 					exact
 					path='/'
 					render={(routeProps) => (
-						<ResultsView {...routeProps} />
+						<ResultsView setModal={setModalIsActive} {...routeProps} />
 					)}
 				/>
 				{[
@@ -28,7 +30,7 @@ function App(props) {
 						path={path}
 						key={index}
 						render={(routeProps) => (
-							<ResultsView {...routeProps} />
+							<ResultsView setModal={() => setModalIsActive} {...routeProps} />
 						)}
 					/>
 				))}
@@ -47,6 +49,12 @@ function App(props) {
 		<main className='App'>
 			<Header />
 			<div className='view'>{renderView()}</div>
+
+			{modalIsActive && (
+				<Modal
+					setModalIsActive={setModalIsActive}
+				/>
+			)}
 		</main>
 	);
 }
