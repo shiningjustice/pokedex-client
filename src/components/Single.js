@@ -4,8 +4,7 @@ import { Textarea, Label } from './form/form';
 import { usePokemon } from './helpers/context';
 import AuthApiService from '../services/auth-api-service';
 import PokemonApiService from '../services/pokemon-api-service';
-import conversions from './helpers/conversions';
-import { TypeEmoji } from './helpers/renameme';
+import * as pokemonHelpers from './helpers/pokemonHelpers';
 
 import './tempstyles.css';
 
@@ -59,6 +58,8 @@ const Single = (props) => {
 					setLoading(false);
 					// }
 				});
+		} else {
+			setLoading(false);
 		}
 	};
 
@@ -255,7 +256,7 @@ const Single = (props) => {
 				<h2>
 					{currPokemon.name}{' '}
 					{currPokemon.types.map((obj, index) => (
-						<TypeEmoji key={index} type={obj.type.name} />
+						<pokemonHelpers.TypeEmoji key={index} type={obj.type.name} />
 					))}
 				</h2>
 				<h3>#{currPokemon.id}</h3>
@@ -271,11 +272,11 @@ const Single = (props) => {
 					<tbody>
 						<tr>
 							<th>Height</th>
-							<td>{conversions.convertHeight(currPokemon.height)}</td>
+							<td>{pokemonHelpers.convertHeight(currPokemon.height)}</td>
 						</tr>
 						<tr>
 							<th>Weight</th>
-							<td>{conversions.convertWeight(currPokemon.weight)}</td>
+							<td>{pokemonHelpers.convertWeight(currPokemon.weight)}</td>
 						</tr>
 						<tr>
 							<th>Type(s)</th>
@@ -315,7 +316,7 @@ const Single = (props) => {
 						</form>
 						{editsInProgress ? (
 							<form onSubmit={handleSubmitNotes}>
-								<Label htmlFor='pokemon-notes'>Notes</Label>
+								<Label htmlFor='notes'>Notes</Label>
 								{warnUnsavedChanges && (
 									<span className='error'>Unsaved changes</span>
 								)}
@@ -335,7 +336,7 @@ const Single = (props) => {
 								/>
 								<button type='submit'>Save</button>
 								<button
-									type='cancel'
+									type='reset'
 									onClick={(event) => {
 										event.target.value = currPokemon.notes;
 										setEditsInProgress(false);
