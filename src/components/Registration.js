@@ -24,16 +24,19 @@ const Registration = (props) => {
 
 	const handleSubmit = (ev) => {
 		ev.preventDefault();
-		const { firstName, username, password } = ev.target;
+
+		if (password !== confirmedPassword) {
+			return setError('Password fields must match');
+		}
 		AuthApiService.postUser({
-			first_name: firstName.value,
-			username: username.value,
-			password: password.value,
+			first_name: firstName,
+			username,
+			password
 		})
 			.then((user) => {
-				firstName.value = '';
-				username.value = '';
-				password.value = '';
+				setFirstName('');
+				setUsername('');
+				setPassword('');
 				props.onRegistrationSuccess();
 			})
 			.catch((res) => {
@@ -45,7 +48,7 @@ const Registration = (props) => {
 		firstInput.current.focus();
 	}, []);
 
-	console.log(firstName, username);
+	
 	return (
 		<Form className='Registration' onSubmit={handleSubmit}>
 			{error && <ErrorContainer error={error} />}
@@ -79,7 +82,7 @@ const Registration = (props) => {
 					id={`login-username-input`}
 					aria-label='username'
 					onBlur={() =>
-						!username ? setUsernameIsEmpty(true) : setUsernameIsEmpty(true)
+						!username ? setUsernameIsEmpty(true) : setUsernameIsEmpty(false)
 					}
 					required
 				></Input>
