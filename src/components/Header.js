@@ -7,6 +7,10 @@ import '../styles/header.css';
 const Header = (props) => {
 	const auth = useAuth();
 
+	const handleLogoutClick = () => {
+		auth.processLogout();
+	};
+
 	const renderUserLinks = () => {
 		if (!!auth.user.id) {
 			return (
@@ -19,7 +23,13 @@ const Header = (props) => {
 						</Button>
 					</Link>
 					<Link to='/'>
-						<Button variant='light'>Logout</Button>
+						<Button
+							type='button'
+							onClick={() => handleLogoutClick()}
+							variant='light'
+						>
+							Logout
+						</Button>
 					</Link>
 				</>
 			);
