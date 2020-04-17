@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "pokedex-client",
+  "name": "pb-pokedex",
   "routes": [
       { "handle": "filesystem" },
       { "src": "/.*", "dest": "/index.html" }
