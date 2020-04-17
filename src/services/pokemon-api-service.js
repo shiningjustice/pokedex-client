@@ -83,8 +83,8 @@ const PokemonApiService = {
 	// I'm skipping the categories to browse because I decided it's better to save
 	// those on the front end for formatting purposes
 
-	// Query will be returned either an obj or an array w/ something of  the
-	// following format: [ {id: [1, 2, 3]}, {name: pikachu }]
+	// Queries can be type object or type array (see below. An example of an obj
+	// submitted could be one of the objects in the array. 
 	getRequestedPokemon: (queries, pageNum) => {
 		let queryStr;
 
