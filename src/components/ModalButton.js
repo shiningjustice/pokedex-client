@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { TypeEmoji } from './helpers/pokemonHelpers';
 
 import '../styles/modalButton.css';
 
@@ -39,7 +40,7 @@ const ModalButton = (props) => {
 						variant={props.variant ? props.variant : 'secondary'}
 						className={`ModalButton ${props.cnProp}`}
 					>
-						{data.name}
+						{data.name} {partOfCategory === 'type' && <TypeEmoji type={data.name} />}
 					</Button>
 				</Link>
 				// </div>
