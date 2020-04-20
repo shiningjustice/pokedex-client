@@ -133,7 +133,7 @@ const Results = (props) => {
 			content = `${firstNamePossessive} Favorites`;
 		} else if (params.category && params.subcategory) {
 			const { category, subcategory } = params;
-			content = `Results for ${category} ${subcategory}`;
+			content = `Results for ${category} "${subcategory}"`;
 		}
 
 		return <h2 className='Results pixelFont'>{content}</h2>;
