@@ -296,7 +296,7 @@ const Single = (props) => {
 										setEditsInProgress(false);
 									}}
 									className='notes'
-									variant='secondary'
+									variant='danger'
 								>
 									Cancel
 								</Button>

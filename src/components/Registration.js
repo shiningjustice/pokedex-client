@@ -133,7 +133,7 @@ const Registration = (props) => {
 				</Form.Group>
 			</Form.Row>
 
-			<Button type='submit' variant='secondary'>Submit</Button>
+			<Button type='submit' variant='danger'>Submit</Button>
 			<Link to='/login'><Button variant='link'>Already have an account?</Button></Link>
 		</Form>
 	);

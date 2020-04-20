@@ -76,7 +76,7 @@ const Login = (props) => {
 				</Col>
 			</Form.Group>
 
-			<Button type='submit' variant='secondary'>Submit</Button>
+			<Button type='submit' variant='danger'>Submit</Button>
 			<Link to='/register'><Button variant='link'>Sign Up For an Account</Button></Link>
 		</Form>
 	);
