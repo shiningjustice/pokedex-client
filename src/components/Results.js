@@ -150,7 +150,7 @@ const Results = (props) => {
 	};
 
 	const conditionallyRenderMoreButton = () => {
-		if (props.location.pathname !== '/favorites' && pokemonResults.length > 0) {
+		if (pokemonResults.length > 19) {
 			return (
 				<Button onClick={loadMore} variant='secondary'>
 					Load More
@@ -168,7 +168,6 @@ const Results = (props) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [props.match.url]);
 
-	console.log(pokemonResults.length);
 	return (
 		<Container className='Results mainContainer'>
 			{renderH2()}
