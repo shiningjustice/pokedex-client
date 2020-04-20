@@ -285,7 +285,7 @@ const Single = (props) => {
 									}
 									nameProp='notes'
 								/>
-								<Button type='submit' className='notes'>
+								<Button type='submit' variant='danger' className='notes'>
 									Save
 								</Button>
 								<Button
@@ -308,6 +308,7 @@ const Single = (props) => {
 									onClick={() => setEditsInProgress(true)}
 									type='button'
 									className='Single editButton'
+									variant='danger'
 								>
 									Edit
 								</Button>
