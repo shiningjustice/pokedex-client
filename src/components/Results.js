@@ -164,7 +164,7 @@ const Results = (props) => {
 		return () => {
 			setPageNum(1);
 		};
-	}, []);
+	}, [props.match.url]);
 
 	
 	return (
