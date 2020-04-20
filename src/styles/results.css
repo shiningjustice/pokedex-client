@@ -1,43 +1,63 @@
-
-img.Results {
-  background-color: #9fd7f1;
-  border: 1pt solid gray;
+.Results.mainContainer,
+.Single.mainContainer {
+	margin-top: 2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
+
 ul.Results {
-  display: grid;
-  grid-template-columns: 30% 30% 30%;
-  column-gap: 20px;
-  row-gap: 20px;
-  /* display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between; */
-}
-
-li.Results {
-  width: 100%;
-  height: 100%;
-}
-
-
-.Results.mainContainer, .Single.mainContainer {
-  margin-top: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+	display: grid;
+	grid-template-columns: 100%;
+	row-gap: 10px;
 }
 
 h2.Results {
-  text-align: center;
+	margin-bottom: 1.5em;
+	text-align: center;
+	color: black;
 }
 
-.Results > button {
-  align-self: center;
-  margin: 1.5em 0;
+li.Results {
+	width: 100%;
+	height: 100%;
 }
 
 .pokemonNameCard {
-  font-size: 9pt;
-  text-transform: uppercase;
-  letter-spacing: .5px;
+	font-size: 9pt;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+img.Results {
+	background-color: lightgray;
+	border-top: gray 0.5pt solid;
+}
+
+.Results > button {
+	align-self: center;
+	margin: 1.5em 0;
+}
+
+@media screen and (min-width: 375px) {
+	ul.Results {
+		grid-template-columns: 50% 50%;
+    column-gap: 8px;
+    row-gap: 8px;
+  }
+}
+
+@media screen and (min-width: 620px) {
+	ul.Results {
+		grid-template-columns: 33% 33% 33%;
+	}
+}
+
+
+@media screen and (min-width: 768px) {
+	ul.Results {
+		column-gap: 15px;
+		row-gap: 15px;
+	}
 }

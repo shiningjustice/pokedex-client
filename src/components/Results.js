@@ -152,7 +152,7 @@ const Results = (props) => {
 		if (props.location.pathname !== '/favorites' && pokemonResults.length > 0) {
 			return (
 				<Button onClick={loadMore} variant='secondary'>
-					Load More Pokemon
+					Load More
 				</Button>
 			);
 		}
@@ -183,6 +183,7 @@ const Results = (props) => {
 							className='Results'
 							bg='light'
 							text='dark'
+							border='secondary'
 						>
 							<Link to={`/pokemon/${pokemon.name}`}>
 								<Card.Body>
@@ -190,7 +191,6 @@ const Results = (props) => {
 										size='sm'
 										className='text-center pixelFont pokemonNameCard'
 									>
-										{/* #{id} */}
 										{pokemon.name}
 									</Card.Text>
 								</Card.Body>
