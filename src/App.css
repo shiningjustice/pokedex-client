@@ -1,4 +1,9 @@
 .view {
-  max-width: 600px;
-  margin-left: calc((100vw - 600px) / 2);
+  padding: 5px;
+}
+@media screen and (min-width: 600px) {
+  .view {
+    max-width: 600px;
+    margin-left: calc((100vw - 600px) / 2);
+  }
 }

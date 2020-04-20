@@ -5,10 +5,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: whitesmoke;
 }
 
+h2 {
+  font-size: 1.5rem;  
+  letter-spacing: 2px;
+}
+
+a:hover {
+  text-decoration-color: #cc0000 !important;
+}
 .pixelFont {
   font-family: 'Press Start 2P', cursive;
+  color: #cc0000;
   text-transform: uppercase;
 }
 
@@ -22,8 +32,21 @@ body {
   font-style: italic;
 }
 
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.scrTabletMin {
+  display: none;
+}
+
+@media screen and (min-width: 600px) {
+  .scrTabletMin {
+    display: inherit;
+  }
+
+  .scrMobileMax {
+    display: none;
+  }
 }
