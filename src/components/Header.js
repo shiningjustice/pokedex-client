@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from './helpers/context';
-import { Container, Button } from './Bootstrap';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+
 import '../styles/header.css';
 
 const Header = (props) => {

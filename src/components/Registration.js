@@ -2,7 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import AuthApiService from '../services/auth-api-service';
 import { Label, Input } from './form/form';
-import { Form, Col, Button } from './Bootstrap';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+
 import ErrorContainer from '../components/ErrorContainer';
 
 const Registration = (props) => {

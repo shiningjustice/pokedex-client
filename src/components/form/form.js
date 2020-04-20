@@ -1,7 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import { Form } from '../Bootstrap';
-// import './Form.css'
+import Form from 'react-bootstrap/Form';
 
 export function Label({ className, ...props }) {
   return (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { random, categories } from './helpers/searchHelper';
-import { Modal, Container, Row, Button } from './Bootstrap';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import ModalButton from '../components/ModalButton';
 
 import '../styles/advancedSearch.css';

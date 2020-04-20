@@ -4,7 +4,11 @@ import { usePokemon } from './helpers/context';
 import LoadingIndicator from './LoadingIndicator';
 import PokemonApiService from '../services/pokemon-api-service';
 import * as pokemonHelpers from './helpers/pokemonHelpers';
-import { Container, Table, Form, Button, Badge } from './Bootstrap';
+import Container from 'react-bootstrap/Container';
+import Table from 'react-bootstrap/Table';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Badge from 'react-bootstrap/Badge';
 
 import '../styles/single.css';
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import PokemonApiService from '../services/pokemon-api-service';
 import { usePokemon } from './helpers/context';
-import { Form, Col, Button } from './Bootstrap';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 import '../styles/searchBar.css';
 

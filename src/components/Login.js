@@ -2,7 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import AuthApiService from '../services/auth-api-service';
 import { useAuth } from './helpers/context';
-import { Form, Row, Col, Button } from './Bootstrap';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+
 import { Label, Input } from './form/form';
 import ErrorContainer from '../components/ErrorContainer';
 

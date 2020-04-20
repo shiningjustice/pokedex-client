@@ -6,7 +6,9 @@ import { usePokemon } from '../components/helpers/context';
 import PokemonApiService from '../services/pokemon-api-service';
 import { categories } from '../components/helpers/searchHelper';
 import LoadingIndicators from '../components/LoadingIndicator';
-import { Container, Button, Card } from './Bootstrap';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 import '../styles/results.css';
 
