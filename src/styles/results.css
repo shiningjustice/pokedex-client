@@ -24,6 +24,11 @@ li.Results {
 	height: 100%;
 }
 
+.lessThanThree {
+	display: flex !important; 
+	flex-direction: row;
+}
+
 .pokemonNameCard {
 	font-size: 9pt;
 	text-transform: uppercase;

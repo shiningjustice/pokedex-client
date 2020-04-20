@@ -168,11 +168,11 @@ const Results = (props) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [props.match.url]);
 
-	
+	console.log(pokemonResults.length);
 	return (
 		<Container className='Results mainContainer'>
 			{renderH2()}
-			<ul className='Results'>
+			<ul className={`Results ${pokemonResults.length < 3 && 'lessThanThree'}`}>
 				{pokemonResults.map((pokemon, index) => {
 					const id =
 						pokemon.id || pokemon.url.slice(34, pokemon.url.length - 1);
