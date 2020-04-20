@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Register from '../components/Registration';
 import Login from '../components/Login';
-import { Container } from '../components/Bootstrap';
+import Container from 'react-bootstrap/Container';
 
 import '../styles/authView.css';
 

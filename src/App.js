@@ -6,7 +6,7 @@ import ResultsView from './views/ResultsView';
 import SingleView from './views/SingleView';
 import AuthView from './views/AuthView';
 import PageNotFound from './views/PageNotFound';
-import { Modal } from './components/Bootstrap';
+import Modal from 'react-bootstrap/Modal';
 import AdvancedSearch from './components/AdvancedSearch';
 
 import './App.css';
