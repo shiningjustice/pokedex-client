@@ -17,13 +17,13 @@ const ModalButton = (props) => {
 		<>
 			{data.subcategories ? (
 				<Button
-					size='lg'
-					className='ModalButton'
 					onClick={() => {
 						setSecondPageContent(data);
 						setPageNumber(2);
 					}}
-					{...props}
+					size='lg'
+					className='ModalButton'
+					variant={props.variant ? props.variant : 'secondary'}
 				>
 					{data.name}
 				</Button>
@@ -34,7 +34,11 @@ const ModalButton = (props) => {
 					onClick={() => setModal(false)}
 					// className='ModalButton'
 				>
-					<Button size='lg' {...props} className={`ModalButton ${props.cnProp}`}>
+					<Button
+						size='lg'
+						variant={props.variant ? props.variant : 'secondary'}
+						className={`ModalButton ${props.cnProp}`}
+					>
 						{data.name}
 					</Button>
 				</Link>

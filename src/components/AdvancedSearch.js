@@ -11,7 +11,7 @@ const AdvancedSearch = (props) => {
 
 	return (
 		<div className='AdvancedSearch'>
-			<Modal.Header closeButton closeLabel>
+			<Modal.Header closeButton={true}>
 				<Modal.Title>Browse More Pokemon</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
