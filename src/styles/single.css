@@ -1,8 +1,4 @@
-
-img.Single {
-  align-self: center;
-}
-
+/* Container */
 .Single.mainContainer {
   margin-top: 3em;
   display: flex;
@@ -10,23 +6,37 @@ img.Single {
   justify-content: center;
 }
 
+/* Header */
+.Single.header {
+  background-color: darkgray;
+  padding: 1.5em 1em 1em;
+  border-radius: 15px 15px 0 0;
+}
+h2.Single {
+  font: #4d0000;
+}
 .Single.header, .Single.h3 {
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-self: flex-end;
+  margin: 0;
 }
 
-.badge {
-  margin-left: 1em;
+/* Body */
+img.Single {
+  align-self: center;
+}
+.Single.types {
+  margin-right: 1em;
 }
 
+/* Saved Fields */
 .Single.userSavedFields {
   display: flex;
   flex-direction: row;
   justify-content: start;
 }
-
 .Single.notes {
   display: flex;
   flex-direction: row;
@@ -34,32 +44,34 @@ img.Single {
   align-items: center;
   width: 100%;
 }
-
 .Single.Notes > p {
   display: block;
 }
-
 .Single.notes > form {
   width: 100%;
 }
-
 button.notes {
   margin: 1em 1em 1em 0;
 }
-
 .Single.editButton {
   margin-left: auto;
 }
-
-.Single.types {
-  margin-right: 1em;
-}
-
 div.Single.notes {
   margin: 10px 0;
 }
-
 p.notesText {
   padding: 10px;
+}
 
+/* Rest of body */
+.badge {
+  margin-left: 1em;
+}
+
+
+.Single.footer {
+  height: 60px;
+  margin-bottom: 2em;
+  background-color: darkgray;
+  border-radius: 0 0 15px 15px;
 }

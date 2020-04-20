@@ -359,6 +359,7 @@ const Single = (props) => {
 						</tr>
 					</tbody>
 				</Table>
+				<div className='Single footer'></div>
 			</Container>
 		);
 	}
