@@ -51,6 +51,7 @@ const Login = (props) => {
 						ref={firstInput}
 						id={`login-username-input`}
 						nameProp='username'
+						autoComplete='username'
 						required
 					></Input>
 				</Col>
@@ -65,12 +66,13 @@ const Login = (props) => {
 						type='password'
 						id='login-password-input'
 						nameProp='password'
+						autoComplete='current-password'
 						required
 					></Input>
 				</Col>
 			</Form.Group>
 
-			<Button type='submit'>Submit</Button>
+			<Button type='submit' variant='secondary'>Submit</Button>
 			<Link to='/register'><Button variant='link'>Sign Up For an Account</Button></Link>
 		</Form>
 	);

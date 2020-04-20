@@ -64,6 +64,7 @@ const Registration = (props) => {
 					id='registration-firstName-input'
 					onChange={(event) => setFirstName(event.target.value)}
 					nameProp='firstName'
+					autoComplete='fname'
 					onBlur={() =>
 						!firstName ? setFirstNameIsEmpty(true) : setFirstNameIsEmpty(false)
 					}
@@ -84,6 +85,7 @@ const Registration = (props) => {
 					onBlur={() =>
 						!username ? setUsernameIsEmpty(true) : setUsernameIsEmpty(false)
 					}
+					autoComplete='username'
 					required
 				></Input>
 			</Form.Group>
@@ -103,6 +105,7 @@ const Registration = (props) => {
 						onBlur={() =>
 							!password ? setPasswordIsEmpty(true) : setUsernameIsEmpty(false)
 						}
+						autoComplete='new-password'
 						required
 					></Input>
 				</Form.Group>
@@ -121,12 +124,13 @@ const Registration = (props) => {
 								? setConfirmedPasswordIsEmpty(true)
 								: setConfirmedPasswordIsEmpty(false)
 						}
+						autoComplete='new-password'
 						required
 					></Input>
 				</Form.Group>
 			</Form.Row>
 
-			<Button type='submit'>Submit</Button>
+			<Button type='submit' variant='secondary'>Submit</Button>
 			<Link to='/login'><Button variant='link'>Already have an account?</Button></Link>
 		</Form>
 	);

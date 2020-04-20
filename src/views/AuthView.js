@@ -4,6 +4,8 @@ import Register from '../components/Registration';
 import Login from '../components/Login';
 import { Container } from '../components/Bootstrap';
 
+import '../styles/authView.css';
+
 const AuthView = (props) => {
 	const handleLoginSuccess = () => {
 		const { location, history } = props;
