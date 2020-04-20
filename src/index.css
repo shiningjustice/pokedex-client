@@ -10,11 +10,14 @@ body {
 
 h2 {
   font-size: 1.5rem;  
-  letter-spacing: 2px;
 }
 
 a:hover {
   text-decoration-color: #cc0000 !important;
+}
+
+h2.pixelFont {
+  letter-spacing: 2px;
 }
 .pixelFont {
   font-family: 'Press Start 2P', cursive;
