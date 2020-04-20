@@ -49,12 +49,15 @@ const Header = (props) => {
 	};
 
 	return (
-		<Container fluid className='Header d-flex align-items-center'>
-			<Link to='/' className='Header Link'>
-				<h1 className='pixelFont'>Pokedex</h1>
-			</Link>
-			{renderUserLinks()}
-		</Container>
+		<header as='header' className='Header mainContainer'>
+			<Container className='Header container'>
+				<Link to='/' className='Header Link'>
+					<h1 className='Header pixelFont scrMobileMax'>PB PDX</h1>
+					<h1 className='Header pixelFont scrTabletMin'>PB's Pokedex</h1>
+				</Link>
+				{renderUserLinks()}
+			</Container>
+		</header>
 	);
 };
 

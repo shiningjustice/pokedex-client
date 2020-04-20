@@ -1,7 +1,25 @@
-.Link.Header {
-  margin: .5em auto .5em 0;
+.Header.mainContainer {
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+  /* background-color: #313131; */
+  background-color: #cc0000;
+  border-bottom: black 3pt solid;
 }
 
-h1 {
-  font-size: 2rem !important;
+.Header.container {
+	height: 50px;
+	display: flex;
+	align-items: center;
+}
+
+.Link.Header {
+	margin-right: auto;
+}
+
+h1.Header {
+	text-align: center;
+	font-size: 1.5rem;
+  margin: 0;
+  color: whitesmoke;
 }
