@@ -20,7 +20,7 @@
     "prebuild": "CI=true react-scripts test --colors",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "now --prod pokedex-client ./build",
+    "deploy": "now --prod ./build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
