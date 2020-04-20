@@ -26,7 +26,6 @@ const Results = (props) => {
 		pageNum,
 		setPageNum,
 		numTotalPokemon,
-		pokemonPerPage,
 	} = pokeContext;
 
 	const getPokemonByUrl = async (currPageNum) => {
@@ -166,6 +165,7 @@ const Results = (props) => {
 		return () => {
 			setPageNum(1);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [props.match.url]);
 
 	
@@ -199,6 +199,8 @@ const Results = (props) => {
 								<Card.Img
 									className='Results'
 									variant='bottom'
+									SameSite='None'
+									Secure
 									src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon${viewStr[0]}/${id}.png`}
 									alt={`${pokemon.name} sprite`}
 								/>

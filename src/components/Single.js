@@ -34,7 +34,6 @@ const Single = (props) => {
 	const fetchPokemonByUrl = async () => {
 		setLoading(true);
 		if (props.match.params.name !== currPokemon.name) {
-
 			return await PokemonApiService.getRequestedPokemon(
 				{ name: props.match.params.name },
 				pageNum
@@ -58,6 +57,7 @@ const Single = (props) => {
 	useEffect(() => {
 		setEditsInProgress(false);
 		fetchPokemonByUrl();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	// refactor the two submitting functions into one, if time
@@ -102,13 +102,11 @@ const Single = (props) => {
 					setError(error.message);
 				});
 		} else {
-
 			return await PokemonApiService.postNewData({
 				id: currPokemon.id,
 				favorited,
 			})
 				.then((res) => {
-
 					const updatedForFavorited = {};
 					Object.keys(currPokemon).forEach(
 						(key) => (updatedForFavorited[key] = currPokemon[key])
@@ -194,7 +192,6 @@ const Single = (props) => {
 	useEffect(() => {
 		setEditsInProgress(false);
 	}, [currPokemon]);
-
 
 	if (loading) {
 		return <LoadingIndicator />;

@@ -18,7 +18,7 @@ h2.Single {
 .Single.header, .Single.h3 {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   align-self: flex-end;
   margin: 0;
 }
@@ -35,12 +35,12 @@ img.Single {
 .Single.userSavedFields {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .Single.notes {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
 }

@@ -21,7 +21,6 @@ export const PokemonProvider = ({children}) => {
 	// const [ , set ] = useState();
 
 	const numTotalPokemon = 720;
-	const pokemonPerPage = 20;
 
 	const value = {
 		currPokemon,
@@ -32,8 +31,7 @@ export const PokemonProvider = ({children}) => {
 		setPageNum,
 		error,
 		setError,
-		numTotalPokemon,
-		pokemonPerPage
+		numTotalPokemon
 	};
 
 		return (
