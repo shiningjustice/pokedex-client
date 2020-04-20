@@ -3,6 +3,8 @@ import PokemonApiService from '../services/pokemon-api-service';
 import { usePokemon } from './helpers/context';
 import { Form, Col, Button } from './Bootstrap';
 
+import '../styles/searchBar.css';
+
 const SearchBar = (props) => {
 	const pokemonContext = usePokemon();
 	const { setModal } = props;
@@ -30,31 +32,32 @@ const SearchBar = (props) => {
 			.catch((error) => props.setError(error.message));
 	};
 
-	const placeholder = 'Name or number';
-	
+	const placeholder = 'Pokemon Name or Number';
+
 	return (
 		<div className='SearchBar mainContainer'>
-			<Form onSubmit={handleSubmit}>
-
-				<Form.Label column sm={3.5} htmlFor='search-bar'>
-					Search for a Pokemon
-				</Form.Label>
-				<Col sm={4.5}>
-					<Form.Control
-						className='SearchBar'
-						id='search-bar'
-						name='searchBar'
-						aria-label='search-bar'
-						placeholder={placeholder}
-					/>
-				</Col>
-
-				<Col><Button type='submit' className='SearchBar'>
+			<Form className='SearchBar scrMobileMax' onSubmit={handleSubmit}>
+				<Form.Label htmlFor='search-bar' className='SearchBar'>
 					Search
-				</Button></Col>
-				<Button variant='secondary' onClick={() => setModal(true)}>
-				Browse More
-			</Button>
+				</Form.Label>
+				<Form.Control
+					size='sm'
+					className='SearchBar'
+					id='search-bar'
+					name='searchBar'
+					aria-label='search-bar'
+					placeholder={placeholder}
+				/>
+				<Button type='submit' size='sm' variant='danger' className='SearchBar'>
+					<span role='img' aria-label='search-icon'>
+						🔍
+					</span>
+				</Button>
+				<Button size='sm' variant='secondary' onClick={() => setModal(true)}>
+					<span role='img' aria-label='more-icon'>
+						➕
+					</span>
+				</Button>
 			</Form>
 		</div>
 	);

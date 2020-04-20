@@ -1,0 +1,31 @@
+.SearchBar.mainContainer {
+  margin-top: 1em;
+}
+
+form.SearchBar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+form.SearchBar > * {
+  margin: 5px;
+}
+
+label.SearchBar {
+  display: none;
+}
+
+@media screen and (min-width: 375px) {
+  label.SearchBar {
+    display: inherit;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  form.SearchBar {
+    max-width: 480px;
+    margin-left: calc((100% - 480px) / 2);
+  }
+}
