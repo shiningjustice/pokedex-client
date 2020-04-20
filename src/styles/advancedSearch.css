@@ -1,0 +1,22 @@
+h2.AdvancedSearch {
+  margin: .25em 0 .5em;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.buttonsContainer {
+  display: grid;
+  grid-template-columns: 49% 49%;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.pg1 {
+  grid-template-columns: 98%;
+}
+
+@media screen and (min-width: 425px) {
+  .pg1 {
+    grid-template-columns: 49% 49%;
+  }
+}

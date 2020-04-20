@@ -1,0 +1,16 @@
+.ModalButton {
+  height: 5em;
+  font-family: 'Press Start 2P', cursive;
+  font-size: .75rem !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width:  100%;
+}
+
+/* a > button {
+  width: 100%;
+} */
+
+.random {
+  margin:15px 0;
+}

@@ -2,6 +2,8 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
+import '../styles/modalButton.css';
+
 const ModalButton = (props) => {
 	const {
 		data,
@@ -10,7 +12,7 @@ const ModalButton = (props) => {
 		partOfCategory,
 		setModal,
 	} = props;
-	
+
 	return (
 		<>
 			{data.subcategories ? (
@@ -21,20 +23,22 @@ const ModalButton = (props) => {
 						setSecondPageContent(data);
 						setPageNumber(2);
 					}}
+					{...props}
 				>
 					{data.name}
 				</Button>
 			) : (
-				<div className='ModalButton'>
-					<Link
-						to={`/browse/${partOfCategory}/${data.name}`}
-						onClick={() => setModal(false)}
-					>
-						<Button size='lg' {...props}>
-							{data.name}
-						</Button>
-					</Link>
-				</div>
+				// <div className='ModalButton'>
+				<Link
+					to={`/browse/${partOfCategory}/${data.name}`}
+					onClick={() => setModal(false)}
+					// className='ModalButton'
+				>
+					<Button size='lg' {...props} className={`ModalButton ${props.cnProp}`}>
+						{data.name}
+					</Button>
+				</Link>
+				// </div>
 			)}
 		</>
 	);

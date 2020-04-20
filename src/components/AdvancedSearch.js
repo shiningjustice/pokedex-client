@@ -3,6 +3,8 @@ import { random, categories } from './helpers/searchHelper';
 import { Modal, Container, Row, Button } from './Bootstrap';
 import ModalButton from '../components/ModalButton';
 
+import '../styles/advancedSearch.css';
+
 const AdvancedSearch = (props) => {
 	const [pageNumber, setPageNumber] = useState(1);
 	const [secondPageContent, setSecondPageContent] = useState({});
@@ -15,47 +17,43 @@ const AdvancedSearch = (props) => {
 			<Modal.Body>
 				{pageNumber === 1 ? (
 					<>
-						{/* <SearchBar inModal={props.inModal} setModal={props.setModal} disable={Boolean(pageNumber === 2)} /> */}
 						<ModalButton
-							block
-							variant='outline-success'
 							data={random}
-							partOfCategory='random'
 							setModal={props.setModal}
+							cnProp='random'
+							partOfCategory='random'
+							variant='outline-danger'
 						/>
-						<Container>
-							<Row md={2}>
-								{categories.map((category, index) => (
-									<ModalButton
-										setSecondPageContent={setSecondPageContent}
-										setPageNumber={setPageNumber}
-										data={category}
-										key={index}
-									/>
-								))}
-							</Row>
-						</Container>
+						<div className='AdvancedSearch pg1 buttonsContainer'>
+							{categories.map((category, index) => (
+								<ModalButton
+									setSecondPageContent={setSecondPageContent}
+									setPageNumber={setPageNumber}
+									data={category}
+									key={index}
+									variant='secondary'
+								/>
+							))}
+						</div>
 					</>
 				) : (
 					<>
 						<Button
-							variant='secondary'
+							variant='light'
 							onClick={() => setPageNumber(1)}
 						>{`< Back `}</Button>
-						<h2>{secondPageContent.name}</h2>
-						<Container>
-							<Row md={2}>
+						<h2 className='AdvancedSearch'>{secondPageContent.name}</h2>
+						<div className='AdvancedSearch pg2 buttonsContainer'>
 								{secondPageContent.subcategories.map((subcat, index) => (
 									<ModalButton
-										block
 										data={subcat}
 										partOfCategory={secondPageContent.name}
 										key={index}
 										setModal={props.setModal}
+										variant='secondary'
 									/>
 								))}
-							</Row>
-						</Container>
+						</div>
 					</>
 				)}
 			</Modal.Body>
